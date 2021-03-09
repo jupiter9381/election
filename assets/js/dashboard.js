@@ -1,3 +1,4 @@
+var candidate_list = [];
 $( document ).ready(function() {
   getNominates();
 });
@@ -64,6 +65,67 @@ function nominateUser(){
   });
 }
 
+function voteUser(){
+  var modal = $.dialog({
+    title: 'Vote Information',
+    content: 'url:../dashboard/valg-candidate.php',
+    columnClass: 'medium',
+    backgroundDismiss: false,
+    useBootstrap: false,
+    animation: 'none',
+    onContentReady: function () {
+      // bind to events
+      var jc = this;
+      this.$content.find('form').on('submit', function (e) {
+        // if the user submits the form by pressing enter in the field.
+        e.preventDefault();
+        
+        var formData = new FormData(this);
+        formData.append('endpoint', 'add_candidate');
+
+        $.ajax({
+            type:'POST',
+            url: '../includes/dashboard.php',
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+              var json_data = JSON.parse(data)
+
+              if(json_data['status'] == 'SUCCESS'){
+                $.alert({
+                  title: 'Success',
+                  icon: 'far fa-check-circle',
+                  type: 'green',
+                  boxWidth: '500px',
+                  useBootstrap: false,
+                  animation: 'none',
+                  content: "<section class='text-center'>" + json_data['message'] + "<section>"
+                });
+
+                jc.close();
+                getNominates();
+              }
+              else{
+                $.alert({
+                  title: 'Error',
+                  icon: 'fas fa-exclamation-triangle',
+                  type: 'red',
+                  boxWidth: '500px',
+                  useBootstrap: false,
+                  animation: 'none',
+                  content: "<section class='text-center'>" + json_data['message'] + "<section>"
+                });
+              }
+            },
+            error: function(data){}
+        });
+        // jc.$$formSubmit.trigger('click'); 
+      });
+    }
+  });
+}
 function nominateMe(){
   var modal = $.dialog({
     title: 'Candidate Information',
@@ -207,7 +269,6 @@ function nominateMeUpdate(kandidat_id){
     }
   });
 }
-
 function getNominates(){
   checkSelfNominate();
   $("#total_count").html('0')
@@ -222,6 +283,7 @@ function getNominates(){
     dataType: 'json',
     success:function(json_data){
       // var json_data = JSON.parse(data)
+      candidate_list = json_data['candidate_list'];
       $("#total_count").html(json_data['total_count'])
 
       var temp = ""

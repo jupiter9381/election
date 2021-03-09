@@ -1,0 +1,11 @@
+-- 09/03
+ALTER TABLE `mydb`.`valg`   
+	ADD COLUMN `candidateid` INT(11) NULL AFTER `idvalg`,
+	ADD COLUMN `sluttervalg` DATETIME NULL AFTER `startvalg`,
+	ADD COLUMN `information` TEXT NULL AFTER `sluttervalg`;
+	
+ALTER TABLE `mydb`.`valg`   
+	CHANGE `sluttervalg` `sluttvalg` DATETIME NULL;
+	
+	ALTER TABLE `mydb`.`valg`   
+	CHANGE `idvalg` `idvalg` INT(11) NOT NULL AUTO_INCREMENT;

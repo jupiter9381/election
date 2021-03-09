@@ -489,7 +489,10 @@ span a:hover {
 		}
 	}
 }
-
+.jconfirm-holder {
+	padding-left: 20px;
+	padding-right: 20px;
+}
 @media (max-width: 1200px) {
 	body{
 		margin-top: 80px !important;

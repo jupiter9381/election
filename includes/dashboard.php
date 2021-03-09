@@ -411,4 +411,25 @@ else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'withdraw_candidate_
         $response['status'] = 'FAILED';
         echo json_encode($response);
     }
+} else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'do_vote') {
+    $candidateid = validate($_POST['candidateid']);
+    $startforslag = validate($_POST['startforslag']);
+    $sluttforslag = validate($_POST['sluttforslag']);
+    $startvalg = validate($_POST['startvalg']);
+    $sluttvalg = validate($_POST['sluttvalg']);
+    $informasjon = validate($_POST['informasjon']);
+    $sql2 = "INSERT INTO valg(idvalg, candidateid, startforslag, sluttforslag, startvalg, sluttvalg, information, kontrollert) VALUES (0, '$candidateid', '$startforslag', '$sluttforslag', '$startvalg', '$sluttvalg', '$informasjon', '')";
+    $result = mysqli_query($conn, $sql2);
+
+    if($result){
+        $response['message'] = "You successfully voted this candidate";
+        $response['status'] = 'SUCCESS';
+        echo json_encode($response);
+    }
+    else{
+        $response['message'] = "You failed to vote";
+        $response['status'] = 'FAILED';
+        echo json_encode($response);
+    }
 }
+

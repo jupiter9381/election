@@ -53,6 +53,7 @@
           <button class="btn btn-danger" id="withdraw" onclick="withdrawCandidacy()" style="display: none"><i class="fas fa-user-slash"></i> Withdraw Candidacy</button>
           <button class="btn btn-success" id="nominate" onclick="nominateMe()" style="display: none"><i class="fas fa-users"></i> Nominate myself</button>
           <button class="btn btn-primary" onclick="nominateUser()"><i class="fas fa-users"></i> Nominate a user</button>
+          <button class="btn btn-info" onclick="voteUser()"><i class="fas fa-users"></i> velg en kanida</button>
         </section>
     		<section class="grid-border" style="overflow-x: scroll;">
           List of Nominates
