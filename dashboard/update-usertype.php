@@ -28,7 +28,7 @@
     <ul>
       <li><a href="<?php echo $base_path;?>dashboard/" class="active">Home</a></li>
       <li><a href="<?php echo $base_path;?>nominering.php">Nominering</a></li>
-      <li><a href="<?php echo $base_path;?>includes/loggut.php">logout</a></li>
+      <li><a href="<?php echo $base_path;?>includes/loggut.php">logg ut</a></li>
     </ul> 
   </nav>
   <section class="main-content">
@@ -95,7 +95,7 @@
                   </section>
                 </section>
                 <section class="form-group">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block login-button">send</button>
                 </section>
               </form>
             </section>

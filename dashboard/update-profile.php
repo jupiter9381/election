@@ -76,23 +76,23 @@
             <section class="card-body">
               <form id="changePassForm" class="form-horizontal">
                 <section class="form-group">
-                  <label for="password" class="cols-sm-2 control-label">New Password</label>
+                  <label for="password" class="cols-sm-2 control-label">ny passord</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
-                      <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Legg inn ditt Password" />
                     </section>
                   </section>
                 </section>
                 <section class="form-group">
-                  <label for="re_password" class="cols-sm-2 control-label">Confirm Password</label>
+                  <label for="re_password" class="cols-sm-2 control-label">bytt passord</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
-                      <input type="password" class="form-control" name="re_password" id="re_password" placeholder="Confirm your Password" />
+                      <input type="password" class="form-control" name="re_password" id="re_password" placeholder="bekreft ditt passord" />
                     </section>
                   </section>
                 </section>
                 <section class="form-group ">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Send</button>
                 </section>
               </form>
             </section>

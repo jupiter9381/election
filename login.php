@@ -34,30 +34,30 @@
       <section class="row justify-content-center">
         <section style="width: 100%; max-width: 600px">
           <section class="card">
-            <section class="card-header"><h1>Login</h1></section>
+            <section class="card-header"><h1>Logg inn</h1></section>
             <section class="card-body">
               <section id="mess_modal" class="text-center" style="display: none">
                 <section id="mess_mess" class="alert alert-success" role="alert"></section>
               </section>
               <form id="loginForm" class="form-horizontal">
                 <section class="form-group">
-                  <label for="epost" class="cols-sm-2 control-label">Your Email</label>
+                  <label for="epost" class="cols-sm-2 control-label">Skriv inn E-post</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
-                      <input type="email" class="form-control" name="epost" id="epost" placeholder="Enter your Email" />
+                      <input type="email" class="form-control" name="epost" id="epost" placeholder=" Legg inn ditt Email" />
                     </section>
                   </section>
                 </section>
                 <section class="form-group">
-                  <label for="password" class="cols-sm-2 control-label">Password</label>
+                  <label for="password" class="cols-sm-2 control-label">Passord</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
-                      <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                      <input type="password" class="form-control" name="password" id="password" placeholder=" Legg inn ditt Passord" />
                     </section>
                   </section>
                 </section>
                 <section class="form-group ">
-                  <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block login-button"> Logg inn</button>
                 </section>
                 <section style="display: grid;grid-template-columns: 1fr 1fr;">
                   <a href="#"> Glemt Passord?</a>

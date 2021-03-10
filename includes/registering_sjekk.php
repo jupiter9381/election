@@ -75,7 +75,7 @@ if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'register') {
         $result2 = mysqli_query($conn, $sql2);
 
         if ($result2) {
-            $response['message'] = 'Your account has been created successfully';
+            $response['message'] = 'Du har opprettet en bruker !';
             $response['status'] = 'SUCCESS';
             echo json_encode($response);
             exit();

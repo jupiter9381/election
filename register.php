@@ -37,23 +37,23 @@
             <section class="card-body">
               <form id="registerForm" class="form-horizontal">
                 <section class="form-group">
-                  <label for="fnavn" class="cols-sm-2 control-label">First Name</label>
+                  <label for="fnavn" class="cols-sm-2 control-label">Fornavn</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
-                      <input type="text" class="form-control" name="fnavn" id="fnavn" placeholder="Enter your Frist Name" />
+                      <input type="text" class="form-control" name="fnavn" id="fnavn" placeholder="Legg inn ditt Fornavn" />
                     </section>
                   </section>
                 </section>
                 <section class="form-group">
-                  <label for="enavn" class="cols-sm-2 control-label">Last Name</label>
+                  <label for="enavn" class="cols-sm-2 control-label">Etternavn</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
-                      <input type="text" class="form-control" name="enavn" id="enavn" placeholder="Enter your Last Name" />
+                      <input type="text" class="form-control" name="enavn" id="enavn" placeholder="Legg inn ditt Etternavn" />
                     </section>
                   </section>
                 </section>
                 <section class="form-group">
-                  <label for="enavn" class="cols-sm-2 control-label">Gender</label>
+                  <label for="enavn" class="cols-sm-2 control-label">Etternavn</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
                       <select class="form-control" name="gender" id="gender" required>
@@ -64,7 +64,7 @@
                   </section>
                 </section>
                 <section class="form-group">
-                  <label for="enavn" class="cols-sm-2 control-label">Birth Date</label>
+                  <label for="enavn" class="cols-sm-2 control-label">Fødselsdato</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
                       <input type="date" class="form-control" name="bday" id="bday"/>
@@ -72,7 +72,7 @@
                   </section>
                 </section>
                 <section class="form-group">
-                  <label for="enavn" class="cols-sm-2 control-label">Phone Number</label>
+                  <label for="enavn" class="cols-sm-2 control-label">Telefonnummer</label>
                   <small>Format: 4734567890</small>
                   <section class="cols-sm-10">
                     <section class="input-group">
@@ -81,18 +81,18 @@
                   </section>
                 </section>
                 <section class="form-group">
-                  <label for="epost" class="cols-sm-2 control-label">Your Email</label>
+                  <label for="epost" class="cols-sm-2 control-label">Skriv inn E-post</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
-                      <input type="email" class="form-control" name="epost" id="epost" placeholder="Enter your Email" />
+                      <input type="email" class="form-control" name="epost" id="epost" placeholder="Legg inn ditt Email" />
                     </section>
                   </section>
                 </section>
                 <section class="form-group">
-                  <label for="password" class="cols-sm-2 control-label">Password</label>
+                  <label for="password" class="cols-sm-2 control-label">Passord</label>
                   <section class="cols-sm-10">
                     <section class="input-group">
-                      <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Legg inn ditt Passord" />
                     </section>
                   </section>
                 </section>

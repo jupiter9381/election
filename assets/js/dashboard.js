@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
 function nominateUser(){
   var modal = $.dialog({
-    title: 'Candidate Information',
+    title: 'Kandidat informasjon',
     content: 'url:../dashboard/nominate-user.php',
     columnClass: 'medium',
     backgroundDismiss: false,
@@ -128,7 +128,7 @@ function voteUser(){
 }
 function nominateMe(){
   var modal = $.dialog({
-    title: 'Candidate Information',
+    title: 'Kandidat informasjon',
     content: 'url:../dashboard/nominate-me.php',
     columnClass: 'medium',
     backgroundDismiss: false,
@@ -190,7 +190,7 @@ function nominateMe(){
 
 function nominateMeUpdate(kandidat_id){
   var modal = $.dialog({
-    title: 'Update Candidate Information',
+    title: 'Update Kandidat informasjon',
     content: 'url:../dashboard/nominate-me-update.php',
     columnClass: 'medium',
     backgroundDismiss: false,

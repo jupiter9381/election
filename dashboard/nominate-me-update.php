@@ -24,6 +24,6 @@
     </section>
   </section>
   <section class="form-group ">
-    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Submit</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Send</button>
   </section>
 </form>

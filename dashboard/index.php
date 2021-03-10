@@ -28,7 +28,7 @@
     <ul>
       <li><a href="<?php echo $base_path;?>dashboard/" class="active">Home</a></li>
       <li><a href="<?php echo $base_path;?>nominering.php">Nominering</a></li>
-      <li><a href="<?php echo $base_path;?>includes/loggut.php">logout</a></li>
+      <li><a href="<?php echo $base_path;?>includes/loggut.php">logg ut</a></li>
     </ul> 
   </nav>
   <section class="main-content">
@@ -54,9 +54,9 @@
     	<section>
         <section class="text-right mb-10">
           <button class="btn btn-danger" id="withdraw" onclick="withdrawCandidacy()" style="display: none"><i class="fas fa-user-slash"></i> Withdraw Candidacy</button>
-          <button class="btn btn-success" id="nominate" onclick="nominateMe()" style="display: none"><i class="fas fa-users"></i> Nominate myself</button>
-          <button class="btn btn-primary" onclick="nominateUser()"><i class="fas fa-users"></i> Nominate a user</button>
-          <button class="btn btn-info" onclick="voteUser()"><i class="fas fa-users"></i> velg en kanida</button>
+          <button class="btn btn-success" id="nominate" onclick="nominateMe()" style="display: none"><i class="fas fa-users"></i> Nominer meg selv</button>
+          <button class="btn btn-primary" onclick="nominateUser()"><i class="fas fa-users"></i> Nominer en bruker</button>
+          <button class="btn btn-info" onclick="voteUser()"><i class="fas fa-users"></i> Velg en kandidat</button>
         </section>
     		<section class="grid-border" style="overflow-x: scroll;">
           List of Nominates

@@ -34,7 +34,7 @@ if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'login') {
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['logged_in'] = true;
 
-                $response['message'] = "Login success, Please wait";
+                $response['message'] = "log inn godkjent, Vennligst vent";
                 $response['status'] = 'SUCCESS';
                 echo json_encode($response);
                 exit();
