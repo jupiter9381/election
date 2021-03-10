@@ -431,5 +431,96 @@ else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'withdraw_candidate_
         $response['status'] = 'FAILED';
         echo json_encode($response);
     }
+} else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'get_users') {
+    $sql = "SELECT * FROM bruker where brukertype_id != 1 order by id desc";
+    $result = mysqli_query($conn, $sql);
+
+    $res = [];
+    $emparray = array();
+    if(mysqli_num_rows($result) > 0) {
+        while($row=mysqli_fetch_assoc($result)){
+            $emparray[] = $row;
+        }
+
+        $res['total_count'] = mysqli_num_rows($result);
+        $res['user_list'] = $emparray;
+
+        echo json_encode($res);
+    }
+    else{
+        $res['total_count'] = 0;
+        $res['user_list'] = [];
+
+        echo json_encode($res);
+    }
+} else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'update_userrole') {
+    $userid = validate($_POST['userid']);
+    $usertype_id = validate($_POST['usertype']);
+    $usertype = "";
+    if($usertype_id == "1") {
+        $usertype = "Administrator";
+    } else if ($usertype_id == "2") {
+        $usertype = "Candidates";
+    } else if ($usertype_id == "3") {
+        $usertype = "Voters";
+    } else {
+        $usertype = "Controllers";
+    }
+    $error = true;
+    $error_mess = "";
+
+    if (empty($userid)) {
+        $error_mess = "Bruker is required";
+    } else if (empty($usertype)) {
+        $error_mess = "User type is required";
+    } else {
+        $error = false;
+    }
+
+    if($error){
+        $response['message'] = $error_mess;
+        $response['status'] = 'FAILED';
+        echo json_encode($response);
+        exit();
+    }
+
+    $sql = "UPDATE bruker SET brukertype_id='$usertype_id ',brukertype='$usertype' WHERE id='".$userid."'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result){
+        $response['message'] = "Your bruker type is successfully updated.";
+        $response['status'] = 'SUCCESS';
+        echo json_encode($response);
+        exit();
+    }else {
+        $response['message'] = "Change bruker type failed.";
+        $response['status'] = 'FAILED';
+        echo json_encode($response);
+        exit();
+    }
+} else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'get_valg') {
+    $sql = "SELECT * FROM valg INNER JOIN kandidat ON valg.candidateid = kandidat.id";
+    $result = mysqli_query($conn, $sql);
+
+    $res = [];
+    $emparray = array();
+    if(mysqli_num_rows($result) > 0) {
+        while($row=mysqli_fetch_assoc($result)){
+            $emparray[] = $row;
+        }
+
+        $res['total_count'] = mysqli_num_rows($result);
+        $res['valg_list'] = $emparray;
+
+        echo json_encode($res);
+    }
+    else{
+        $res['total_count'] = 0;
+        $res['valg_list'] = [];
+
+        echo json_encode($res);
+    }
 }
+
+
 

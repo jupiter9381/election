@@ -47,6 +47,9 @@
         <a href="update-profile.php">
           <button tyle="button" class="btn btn-primary btn-sm btn-block login-button mb-10"><i class="far fa-edit"></i> Update Profile</button>
         </a>
+        <a href="update-usertype.php">
+          <button tyle="button" class="btn btn-primary btn-sm btn-block login-button mb-10"><i class="far fa-edit"></i> Update Role</button>
+        </a>
     	</section>
     	<section>
         <section class="text-right mb-10">
