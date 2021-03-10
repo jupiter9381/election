@@ -3,6 +3,7 @@
   if (isset($_SESSION['logged_in'])) {
     header("Location:election.php");
   }
+  $base_path = "../";
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,9 +23,9 @@
     </label>
     <label class="logo">VALG</label>
     <ul>
-      <li><a href="<?php echo $base_path;?>dashboard/">Home</a></li>
-      <li><a href="<?php echo $base_path;?>nominering.php">Nominering</a></li>
-      <li><a href="<?php echo $base_path;?>login.php" class="active">Login</a></li>
+      <li><a href="<?php echo $base_path;?>election.php">Home</a></li>
+      <!-- <li><a href="<?php echo $base_path;?>nominering.php">Nominering</a></li>
+      <li><a href="<?php echo $base_path;?>login.php" class="active">Login</a></li> -->
       <li><a href="<?php echo $base_path;?>register.php">Registrer</a></li>
     </ul> 
   </nav>

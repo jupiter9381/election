@@ -3,6 +3,7 @@
   if (isset($_SESSION['logged_in'])) {
     header("Location: dashboard/index.php");
   }
+  $base_path = "../";
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,9 +24,8 @@
     <label class="logo">VALG</label>
     <ul>
       <li><a href="<?php echo $base_path;?>dashboard/">Home</a></li>
-      <li><a href="<?php echo $base_path;?>nominering.php">Nominering</a></li>
+      
       <li><a href="<?php echo $base_path;?>login.php">login</a></li>
-      <li><a href="<?php echo $base_path;?>register.php" class="active">Registrer</a></li>
     </ul> 
   </nav>
   <section>
