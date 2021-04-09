@@ -3,7 +3,7 @@
   if (isset($_SESSION['logged_in'])) {
     header("Location:election.php");
   }
-  $base_path = "../";
+  $base_path = "./";
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,8 +12,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LOGIN</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-  <link rel="stylesheet" href="assets/css/jquery-confirm.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/jquery-confirm.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
   <nav>

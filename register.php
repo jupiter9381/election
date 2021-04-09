@@ -3,7 +3,7 @@
   if (isset($_SESSION['logged_in'])) {
     header("Location: dashboard/index.php");
   }
-  $base_path = "../";
+  $base_path = "./";
 ?>
 <!DOCTYPE html>
 <html>
