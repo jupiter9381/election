@@ -1,6 +1,8 @@
 var candidate_list = [];
+var election_list = [];
 $( document ).ready(function() {
   getNominates();
+  getElections();
 });
 
 function nominateUser(){
@@ -81,7 +83,7 @@ function voteUser(){
         e.preventDefault();
         
         var formData = new FormData(this);
-        formData.append('endpoint', 'add_candidate');
+        formData.append('endpoint', 'do_vote');
 
         $.ajax({
             type:'POST',
@@ -310,6 +312,23 @@ function getNominates(){
   });
 }
 
+function getElections() {
+  var data = {
+    endpoint: 'get_election'
+  }
+  $.ajax({
+    type:'POST',
+    url: '../includes/dashboard.php',
+    data: data,
+    cache:false,
+    dataType: 'json',
+    success:function(json_data){
+      // var json_data = JSON.parse(data)
+      election_list = json_data['election_list'];
+    },
+    error: function(data){}
+  });
+}
 function withdrawCandidacy(){
   var modal = $.confirm({
     title: 'Withdraw from Candidacy',
@@ -397,5 +416,66 @@ function checkSelfNominate(){
       }
     },
     error: function(data){}
+  });
+}
+
+function setElection() {
+  var modal = $.dialog({
+    title: 'Vote Information',
+    content: 'url:../dashboard/valg-setting.php',
+    columnClass: 'medium',
+    backgroundDismiss: false,
+    useBootstrap: false,
+    animation: 'none',
+    onContentReady: function () {
+      // bind to events
+      var jc = this;
+      this.$content.find('form').on('submit', function (e) {
+        // if the user submits the form by pressing enter in the field.
+        e.preventDefault();
+        
+        var formData = new FormData(this);
+        formData.append('endpoint', 'add_election');
+
+        $.ajax({
+            type:'POST',
+            url: '../includes/dashboard.php',
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+              var json_data = JSON.parse(data)
+
+              if(json_data['status'] == 'SUCCESS'){
+                $.alert({
+                  title: 'Success',
+                  icon: 'far fa-check-circle',
+                  type: 'green',
+                  boxWidth: '500px',
+                  useBootstrap: false,
+                  animation: 'none',
+                  content: "<section class='text-center'>" + json_data['message'] + "<section>"
+                });
+
+                jc.close();
+              }
+              else{
+                $.alert({
+                  title: 'Error',
+                  icon: 'fas fa-exclamation-triangle',
+                  type: 'red',
+                  boxWidth: '500px',
+                  useBootstrap: false,
+                  animation: 'none',
+                  content: "<section class='text-center'>" + json_data['message'] + "<section>"
+                });
+              }
+            },
+            error: function(data){}
+        });
+        // jc.$$formSubmit.trigger('click'); 
+      });
+    }
   });
 }

@@ -36,7 +36,7 @@ $('#registerForm').on('submit', (function(e) {
             content: "<section class='text-center'>" + json_data['message'] + "<section>"
           });
       	}
-        window.location.href="../login.php";
+        window.location.href="../default.php";
       },
       error: function(data){
         $(this).trigger("reset");

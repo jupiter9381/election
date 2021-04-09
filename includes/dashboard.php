@@ -520,6 +520,49 @@ else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'withdraw_candidate_
 
         echo json_encode($res);
     }
+    exit;
+} else if(isset($_POST['endpoint']) && $_POST['endpoint'] == 'add_election') {
+    $title = validate($_POST['title']);
+    $startvalg = validate($_POST['startvalg']);
+    $sluttvalg = validate($_POST['sluttvalg']);
+    $informasjon = validate($_POST['informasjon']);
+    $sql2 = "INSERT INTO duration(id,startvalg, sluttvalg, title, description) VALUES (0, '$startvalg', '$sluttvalg', '$title', '$informasjon')";
+    
+    $result = mysqli_query($conn, $sql2);
+
+    if($result){
+        $response['message'] = "You successfully added election";
+        $response['status'] = 'SUCCESS';
+        echo json_encode($response);
+    }
+    else{
+        $response['message'] = "You failed to add election";
+        $response['status'] = 'FAILED';
+        echo json_encode($response);
+    }
+    exit;
+} else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'get_election') {
+    $sql = "SELECT * FROM duration order by id desc";
+    $result = mysqli_query($conn, $sql);
+
+    $res = [];
+    $emparray = array();
+    if(mysqli_num_rows($result) > 0) {
+        while($row=mysqli_fetch_assoc($result)){
+            $emparray[] = $row;
+        }
+
+        $res['total_count'] = mysqli_num_rows($result);
+        $res['election_list'] = $emparray;
+
+        echo json_encode($res);
+    }
+    else{
+        $res['total_count'] = 0;
+        $res['election_list'] = [];
+
+        echo json_encode($res);
+    }
 }
 
 

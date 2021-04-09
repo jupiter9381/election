@@ -2,7 +2,7 @@
 	session_start();
 	if(!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
 		$base_path = "";
-		header("Location: ../login.php");
+		header("Location: ../default.php");
 	}
 	else{
 		$base_path = "../";
@@ -53,6 +53,7 @@
     	</section>
     	<section>
         <section class="text-right mb-10">
+          <button class="btn btn-danger" id="velg" onclick="setElection()"><i class="fas fa-users"></i> Velg</button>
           <button class="btn btn-danger" id="withdraw" onclick="withdrawCandidacy()" style="display: none"><i class="fas fa-user-slash"></i> Withdraw Candidacy</button>
           <button class="btn btn-success" id="nominate" onclick="nominateMe()" style="display: none"><i class="fas fa-users"></i> Nominer meg selv</button>
           <button class="btn btn-primary" onclick="nominateUser()"><i class="fas fa-users"></i> Nominer en bruker</button>

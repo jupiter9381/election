@@ -25,7 +25,7 @@
     <ul>
       <li><a href="<?php echo $base_path;?>dashboard/">Home</a></li>
       
-      <li><a href="<?php echo $base_path;?>login.php">login</a></li>
+      <li><a href="<?php echo $base_path;?>default.php">login</a></li>
     </ul> 
   </nav>
   <section>
@@ -108,7 +108,7 @@
                   <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Registrer</button>
                 </section>
                 <section class="text-center">
-                  <a href="login.php" class="ca">Har du en konto?</a>
+                  <a href="default.php" class="ca">Har du en konto?</a>
                 </section>
               </form>
             </section>

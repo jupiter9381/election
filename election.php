@@ -23,7 +23,7 @@
       <li><a href="<?php echo $base_path;?>dashboard/" class="active">Home</a></li>
       <li><a href="<?php echo $base_path;?>nominering.php">Nominering</a></li>
       <?php if(isset($_SESSION['logged_in']) == 0) { ?>
-        <li><a href="<?php echo $base_path;?>login.php">login</a></li>
+        <li><a href="<?php echo $base_path;?>default.php">login</a></li>
         <li><a href="<?php echo $base_path;?>register.php">Registrer</a></li>
       <?php } else if(isset($_SESSION['logged_in']) == 1) { ?>
         <li><a href="<?php echo $base_path;?>includes/loggut.php">logout</a></li>

@@ -9,3 +9,22 @@ ALTER TABLE `mydb`.`valg`
 	
 	ALTER TABLE `mydb`.`valg`   
 	CHANGE `idvalg` `idvalg` INT(11) NOT NULL AUTO_INCREMENT;
+
+
+
+
+
+	// 09/04
+
+CREATE TABLE `mydb`.`duration`(  
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `start` DATE,
+  `end` DATE,
+  `title` VARCHAR(255),
+  `description` TEXT,
+  PRIMARY KEY (`id`)
+);
+
+ALTER TABLE `mydb`.`duration`   
+  CHANGE `start` `startvalg` DATE NULL,
+  CHANGE `end` `sluttvalg` DATE NULL;
