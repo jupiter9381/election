@@ -239,11 +239,27 @@ h4 {
 	background-position: center;
 }
 
+.profile-avatar {
+	height: 200px;
+	width: 200px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
 .rounded-circle {
     border-radius: 50%!important;
 }
 
 .img-thumbnail {
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    max-width: 100%;
+}
+
+.img-profile {
     padding: .25rem;
     background-color: #fff;
     border: 1px solid #dee2e6;
@@ -579,3 +595,9 @@ span a:hover {
 	}
 }
 
+
+
+
+.candiate-section p {
+	margin-bottom: 12px;
+}

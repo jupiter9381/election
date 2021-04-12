@@ -298,7 +298,7 @@ function getNominates(){
         temp += "<tr>" 
           +"<td><b>"+json_data['candidate_list'][i]['kandidatcol']+"</b></td>"
           +"<td class='text-center'><section class='rounded-circle img-thumbnail avatar' style='background-image:url(../assets/images/profile/"+json_data['candidate_list'][i]['img_url']+");width:30px;height:30px' title='profile image'></section></td>"
-          +"<td>"+json_data['candidate_list'][i]['bruker']+"</td>"
+          +"<td><a href='./candidate.php?id="+json_data['candidate_list'][i]['id']+"'>"+json_data['candidate_list'][i]['bruker']+"</a></td>"
           +"<td>"+json_data['candidate_list'][i]['bruker_epost']+"</td>"
           +"<td>"+json_data['candidate_list'][i]['institutt']+"</td>"
           +"<td>"+json_data['candidate_list'][i]['informasjon']+"</td>"
@@ -478,4 +478,26 @@ function setElection() {
       });
     }
   });
+}
+
+function showCandidate(id) {
+  console.log(id);
+}
+
+function getCandidate(id, type) {
+  console.log(candidate_list);
+  let index;
+  for (var i = 0; i < candidate_list.length; i++) {
+    if(candidate_list[i]['id'] == id) {
+      index = i;
+    }
+  }
+  if(type == "next") {
+    if(index == candidate_list.length-1) index = -1;
+    window.location.href = './candidate.php?id='+candidate_list[index+1]['id'];
+  }
+  if(type == "prev") {
+    if(index==0) index = candidate_list.length; 
+    window.location.href = './candidate.php?id='+candidate_list[index-1]['id'];
+  }
 }
