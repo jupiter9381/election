@@ -563,6 +563,23 @@ else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'withdraw_candidate_
 
         echo json_encode($res);
     }
+} else if(isset($_POST['endpoint']) && $_POST['endpoint'] == 'candidate_information') {
+    $id = $_POST['id'];
+    $info = $_POST['informasjon'];
+    $sql = "UPDATE kandidat SET informasjon='$info'  WHERE id='$id'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result){
+        $response['message'] = "Your kandidat Informasjon is successfully updated.";
+        $response['status'] = 'SUCCESS';
+        echo json_encode($response);
+        exit();
+    }else {
+        $response['message'] = "Failed.";
+        $response['status'] = 'FAILED';
+        echo json_encode($response);
+        exit();
+    }
 }
 
 

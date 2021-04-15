@@ -270,6 +270,129 @@ function nominateMeUpdate(kandidat_id){
       });
     }
   });
+  var modal = $.dialog({
+    title: 'Kandidat informasjon',
+    content: 'url:../dashboard/nominate-me.php',
+    columnClass: 'medium',
+    backgroundDismiss: false,
+    useBootstrap: false,
+    animation: 'none',
+    onContentReady: function () {
+      // bind to events
+      var jc = this;
+      this.$content.find('form').on('submit', function (e) {
+        // if the user submits the form by pressing enter in the field.
+        e.preventDefault();
+        
+        var formData = new FormData(this);
+        formData.append('endpoint', 'add_candidate_me');
+
+        $.ajax({
+            type:'POST',
+            url: '../includes/dashboard.php',
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+              var json_data = JSON.parse(data)
+
+              if(json_data['status'] == 'SUCCESS'){
+                $.alert({
+                  title: 'Success',
+                  icon: 'far fa-check-circle',
+                  type: 'green',
+                  boxWidth: '500px',
+                  useBootstrap: false,
+                  animation: 'none',
+                  content: "<section class='text-center'>" + json_data['message'] + "<section>"
+                });
+
+                jc.close();
+                getNominates();
+              }
+              else{
+                $.alert({
+                  title: 'Error',
+                  icon: 'fas fa-exclamation-triangle',
+                  type: 'red',
+                  boxWidth: '500px',
+                  useBootstrap: false,
+                  animation: 'none',
+                  content: "<section class='text-center'>" + json_data['message'] + "<section>"
+                });
+              }
+            },
+            error: function(data){}
+        });
+        // jc.$$formSubmit.trigger('click'); 
+      });
+    }
+  });
+}
+
+function updateInformation(kandidat_id, info) {
+  var modal = $.dialog({
+    title: 'Kandidat informasjon',
+    content: 'url:../dashboard/update-information.php',
+    columnClass: 'medium',
+    backgroundDismiss: false,
+    useBootstrap: false,
+    animation: 'none',
+    onContentReady: function () {
+      // bind to events
+      var jc = this;
+      this.$content.find('form #informasjon').html(info);
+      this.$content.find('form').on('submit', function (e) {
+        // if the user submits the form by pressing enter in the field.
+        e.preventDefault();
+        
+        var formData = new FormData(this);
+        formData.append('endpoint', 'candidate_information');
+        formData.append('id', kandidat_id);
+
+        $.ajax({
+            type:'POST',
+            url: '../includes/dashboard.php',
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+              var json_data = JSON.parse(data)
+
+              if(json_data['status'] == 'SUCCESS'){
+                $.alert({
+                  title: 'Success',
+                  icon: 'far fa-check-circle',
+                  type: 'green',
+                  boxWidth: '500px',
+                  useBootstrap: false,
+                  animation: 'none',
+                  content: "<section class='text-center'>" + json_data['message'] + "<section>"
+                });
+
+                jc.close();
+                getNominates();
+              }
+              else{
+                $.alert({
+                  title: 'Error',
+                  icon: 'fas fa-exclamation-triangle',
+                  type: 'red',
+                  boxWidth: '500px',
+                  useBootstrap: false,
+                  animation: 'none',
+                  content: "<section class='text-center'>" + json_data['message'] + "<section>"
+                });
+              }
+            },
+            error: function(data){}
+        });
+        // jc.$$formSubmit.trigger('click'); 
+      });
+    }
+  });
 }
 function getNominates(){
   checkSelfNominate();
@@ -295,6 +418,8 @@ function getNominates(){
         if(json_data['candidate_list'][i]['allow_edit']){
           action_button = "<button class='btn btn-sm btn-primary' title='Edit Informasjon' onclick='nominateMeUpdate(" +json_data['candidate_list'][i]['id']+ ")'><i class='far fa-edit'></i></button>";
         }
+
+        action_button += "<button class='btn btn-sm btn-primary' title='Edit Informasjon' onclick=updateInformation('" +json_data['candidate_list'][i]['id']+ "','"+json_data['candidate_list'][i]['informasjon']+"')><i class='far fa-edit'></i></button>";
         temp += "<tr>" 
           +"<td><b>"+json_data['candidate_list'][i]['kandidatcol']+"</b></td>"
           +"<td class='text-center'><section class='rounded-circle img-thumbnail avatar' style='background-image:url(../assets/images/profile/"+json_data['candidate_list'][i]['img_url']+");width:30px;height:30px' title='profile image'></section></td>"
