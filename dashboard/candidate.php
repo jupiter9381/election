@@ -86,6 +86,7 @@
     					<p><strong>Bruker</strong>  <?= $candidate['bruker']?></p>
     					<p><strong>Stemmer</strong>  <?= $candidate['stemmer']?></p>
     					<p><strong>Informasjon</strong>  <?= $candidate['informasjon']?></p>
+              <p><input type="checkbox"></p>
     					<button class="btn btn-success prev_btn" onclick="getCandidate(<?= $candidate['id']?>, 'prev')">Prev</button>
     					<button class="btn btn-primary next_btn" onclick="getCandidate(<?= $candidate['id']?>, 'next')">Next</button>
     				</section>
