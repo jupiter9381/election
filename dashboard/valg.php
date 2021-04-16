@@ -53,9 +53,7 @@
     	</section>
     	<section>
         <section class="text-right mb-10">
-          <?php if($_SESSION['brukertype'] == "Administrator") {?>
-            <a class="btn btn-info" id="election" href="./valg.php"><i class="fas fa-users"></i> Election</a>
-          <?php }?>
+          <a class="btn btn-info" id="election" href="./valg.php"><i class="fas fa-users"></i> Election</a>
           <button class="btn btn-danger" id="velg" onclick="setElection()"><i class="fas fa-users"></i> Velg</button>
           <button class="btn btn-danger" id="withdraw" onclick="withdrawCandidacy()" style="display: none"><i class="fas fa-user-slash"></i> Withdraw Candidacy</button>
           <button class="btn btn-success" id="nominate" onclick="nominateMe()" style="display: none"><i class="fas fa-users"></i> Nominer meg selv</button>
@@ -70,14 +68,15 @@
             <thead>
               <th>Kandidat Col</th>
               <th class="text-center">Image</th>
-              <th>Name</th>
-              <th>Epost</th>
+              <th>Fakultet</th>
               <th>Institutt</th>
-              <th>Informasjon</th>
-              <th class="text-center">Stemmer</th>
-              <th></th>
+              <th>Startforslag</th>
+              <th>Slutforslag</th>
+              <th>Startvalg</th>
+              <th>Slutttvalg</th>
+              <th class="text-center">Information</th>
             </thead>
-            <tbody id="nominates_list"></tbody>
+            <tbody id="votes_list"></tbody>
           </table>
         </section>
     	</section>

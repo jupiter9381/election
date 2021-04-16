@@ -580,7 +580,30 @@ else if (isset($_POST['endpoint']) && $_POST['endpoint'] == 'withdraw_candidate_
         echo json_encode($response);
         exit();
     }
+} else if(isset($_POST['endpoint']) && $_POST['endpoint'] == 'get_vote') { 
+    $sql = "SELECT valg.*, kandidat.* FROM valg JOIN kandidat ON valg.candidateid = kandidat.id";
+    $result = mysqli_query($conn, $sql);
+
+    $res = [];
+    $emparray = array();
+    if(mysqli_num_rows($result) > 0) {
+        while($row=mysqli_fetch_assoc($result)){
+            $emparray[] = $row;
+        }
+
+        $res['total_count'] = mysqli_num_rows($result);
+        $res['vote_list'] = $emparray;
+
+        echo json_encode($res);
+    }
+    else{
+        $res['total_count'] = 0;
+        $res['vote_list'] = [];
+
+        echo json_encode($res);
+    }
 }
+
 
 
 

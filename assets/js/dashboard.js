@@ -1,8 +1,10 @@
 var candidate_list = [];
 var election_list = [];
+var vote_list = [];
 $( document ).ready(function() {
   getNominates();
   getElections();
+  getVotes();
 });
 
 function nominateUser(){
@@ -450,6 +452,53 @@ function getElections() {
     success:function(json_data){
       // var json_data = JSON.parse(data)
       election_list = json_data['election_list'];
+    },
+    error: function(data){}
+  });
+}
+function getVotes() {
+  var data = {
+    endpoint: 'get_vote'
+  }
+  $.ajax({
+    type:'POST',
+    url: '../includes/dashboard.php',
+    data: data,
+    cache:false,
+    dataType: 'json',
+    success:function(json_data){
+      // var json_data = JSON.parse(data)
+      vote_list = json_data['vote_list'];
+      console.log(vote_list);
+      $("#total_count").html(json_data['total_count'])
+
+      var temp = ""
+      for(var i=0; i < json_data['total_count']; i++){
+        var action_button = ""
+
+        // if(json_data['candidate_list'][i]['allow_edit']){
+        //   action_button = "<button class='btn btn-sm btn-primary' title='Edit Informasjon' onclick='nominateMeUpdate(" +json_data['candidate_list'][i]['id']+ ")'><i class='far fa-edit'></i></button>";
+        // }
+
+        // action_button += "<button class='btn btn-sm btn-primary' title='Edit Informasjon' onclick=updateInformation('" +json_data['candidate_list'][i]['id']+ "','"+json_data['candidate_list'][i]['informasjon']+"')><i class='far fa-edit'></i></button>";
+        temp += "<tr>" 
+          +"<td><b>"+json_data['vote_list'][i]['kandidatcol']+"</b></td>"
+          +"<td class='text-center'><section class='rounded-circle img-thumbnail avatar' style='background-image:url(../assets/images/profile/"+json_data['vote_list'][i]['img_url']+");width:30px;height:30px' title='profile image'></section></td>"
+          +"<td>"+json_data['vote_list'][i]['fakultet']+"</td>"
+          +"<td>"+json_data['vote_list'][i]['institutt']+"</td>"
+          +"<td>"+json_data['vote_list'][i]['startforslag'].substring(0, 10)+"</td>"
+          +"<td>"+json_data['vote_list'][i]['sluttforslag'].substring(0, 10)+"</td>"
+          +"<td>"+json_data['vote_list'][i]['startvalg'].substring(0, 10)+"</td>"
+          +"<td>"+json_data['vote_list'][i]['sluttvalg'].substring(0, 10)+"</td>"
+          +"<td>"+json_data['vote_list'][i]['information']+"</td>"
+          // +"<td>"+json_data['candidate_list'][i]['bruker_epost']+"</td>"
+          // +"<td>"+json_data['candidate_list'][i]['institutt']+"</td>"
+          // +"<td>"+json_data['candidate_list'][i]['informasjon']+"</td>"
+          // +"<td class='text-center'><b>"+json_data['candidate_list'][i]['stemmer']+"</b></td>"
+          // +"<td class='text-center v-align-center'>"+ action_button +"</td>"
+          +"</tr>"
+      }
+      $("#votes_list").html(temp)
     },
     error: function(data){}
   });
