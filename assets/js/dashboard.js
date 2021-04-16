@@ -469,7 +469,6 @@ function getVotes() {
     success:function(json_data){
       // var json_data = JSON.parse(data)
       vote_list = json_data['vote_list'];
-      console.log(vote_list);
       $("#total_count").html(json_data['total_count'])
 
       var temp = ""
@@ -481,11 +480,16 @@ function getVotes() {
         // }
 
         // action_button += "<button class='btn btn-sm btn-primary' title='Edit Informasjon' onclick=updateInformation('" +json_data['candidate_list'][i]['id']+ "','"+json_data['candidate_list'][i]['informasjon']+"')><i class='far fa-edit'></i></button>";
-        temp += "<tr>" 
+        let spotted = "";
+        if(json_data['vote_list'][i]['bruker_epost'].indexOf('@usn.no') > -1) {
+          spotted = "spotted";
+        }
+        temp += "<tr class='"+spotted+"'>" 
           +"<td><b>"+json_data['vote_list'][i]['kandidatcol']+"</b></td>"
           +"<td class='text-center'><section class='rounded-circle img-thumbnail avatar' style='background-image:url(../assets/images/profile/"+json_data['vote_list'][i]['img_url']+");width:30px;height:30px' title='profile image'></section></td>"
           +"<td>"+json_data['vote_list'][i]['fakultet']+"</td>"
           +"<td>"+json_data['vote_list'][i]['institutt']+"</td>"
+          +"<td>"+json_data['vote_list'][i]['bruker_epost']+"</td>"
           +"<td>"+json_data['vote_list'][i]['startforslag'].substring(0, 10)+"</td>"
           +"<td>"+json_data['vote_list'][i]['sluttforslag'].substring(0, 10)+"</td>"
           +"<td>"+json_data['vote_list'][i]['startvalg'].substring(0, 10)+"</td>"

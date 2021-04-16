@@ -17,6 +17,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <link rel="stylesheet" href="../assets/css/jquery-confirm.min.css">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .spotted {
+      background: #ffffc3 !important;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -70,6 +75,7 @@
               <th class="text-center">Image</th>
               <th>Fakultet</th>
               <th>Institutt</th>
+              <th>Epost</th>
               <th>Startforslag</th>
               <th>Slutforslag</th>
               <th>Startvalg</th>
